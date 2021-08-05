@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Saprativa Bhattacharjee &amp; Tirthankar Ghoshal">
+  <meta name="dcterms.date" content="2021-07-26">
+  <title>Argument(ation) Diagramming</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Argument(ation) Diagramming</h1>
+  <p class="author">Saprativa Bhattacharjee &amp; Tirthankar Ghoshal</p>
+  <p class="date">26 July 2021</p>
+</section>
+
+<section id="contents" class="slide level2">
+<h2>Contents</h2>
+</section>
+<section class="slide level2">
+
+<div>
+<ul>
+<li class="fragment">The fundamentals</li>
+<li class="fragment">A little bit of history</li>
+<li class="fragment">Some recent works</li>
+<li class="fragment">What about meetings?</li>
+<li class="fragment">Proposed schemas and discussion</li>
+<li class="fragment">References</li>
+</ul>
+</div>
+<aside class="notes">
+<p>The outline of today’s presentation is as follows. - I will start with a few basic concepts and terminologies used in the computational argumentation literature. - Then I will talk about some of the most significant classical argument diagrams That have been used in various fields such as logic, law and philosophy. - After that I will show you a handful of recent developments in the field of argument diagramming including argumentation knowledge graphs. - Then we will proceed to the multi-party meeting dialogue domain where we shall discuss about the diagrams that have been proposed specifically for capturing the meeting knowledge for computational processing. - Next I will describe our proposed schema and discuss the various issues that needs to be solved for arriving at the final schemas.</p>
+</aside>
+</section>
+<section>
+<section id="the-basics" class="title-slide slide level1">
+<h1>The basics</h1>
+
+</section>
+<section class="slide level2">
+
+<p>Joe Biden is the 46th President of the United States.</p>
+<div class="fragment">
+<p>Joe Biden is the <span style="color:red">best</span> President of the United States.</p>
+<aside class="notes">
+<ul>
+<li>Let us start with a simple example of an argumentative vs non-argumentative statement.</li>
+<li>This is an example of a statement which is objective. The readers or listeners may judge it as either true or false.</li>
+<li>The second statement is subjective. In this case true-false judgments cannot be made. A person may either like or dislike the statement.</li>
+<li>From this we can say that objective statements which state facts are generally non-argumentative. Arguments occur mostly in subjective sentences which express the views of the speaker or writer.</li>
+</ul>
+</aside>
+</div>
+</section>
+<section id="why-argue" class="slide level2">
+<h2>Why argue?</h2>
+<p>To - justify - persuade - resolve conflict - make decision - deliberate - recommend …</p>
+<aside class="notes">
+<ul>
+<li>Now the question is why do we argue or why argument exists?</li>
+<li>Humans generally argue to put forward their views on a particular topic and to make others agree to it.</li>
+<li>This agreement may take different forms depending on the situation and context.</li>
+</ul>
+</aside>
+</section>
+<section class="slide level2">
+
+<p>I am hungry because I didn’t have breakfast today.</p>
+<div class="fragment">
+<p>I am hungry –&gt; <span style="color:red">claim</span></p>
+</div>
+<div class="fragment">
+<p>I didn’t have breakfast today –&gt; <span style="color:red">premise</span></p>
+<aside class="notes">
+<ul>
+<li>Here is a simple statement through which we can understand what are claims and premises in an argument.</li>
+</ul>
+</aside>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Claim</p>
+<p>Conclusion</p>
+</div><div class="column" style="width:50%;">
+<p>Premise</p>
+<p>Evidence</p>
+<p>Reason</p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Monologue</p>
+<p>Single author/speaker</p>
+</div><div class="column" style="width:50%;">
+<p>Dialogue</p>
+<p>More than one</p>
+</div>
+</div>
+</section>
+<section id="enthymemes" class="slide level2">
+<h2>Enthymemes</h2>
+<blockquote>
+<p>The arguments with implicit premises (and sometimes conclusions).</p>
+</blockquote>
+<p><span style="font-size: small;">(Moser and Mercer, 2020)</span></p>
+<blockquote>
+<p>When conclusions are implicit, usually not called enthymemes then.</p>
+</blockquote>
+<p><span style="font-size: small;">(Henning Wachsmuth, Basics of Argumentation)</span></p>
+<aside class="notes">
+<ul>
+<li>Most of the authors define enthymemes as those arguments which have missing premises or conclusions.</li>
+<li>But some like Henning Wachsmuth differ.</li>
+<li>Even the Oxford dictionary of English says only those arguments with missing premises are called enthymemes.</li>
+</ul>
+</aside>
+</section>
+<section class="slide level2">
+
+<blockquote>
+<p>But Brutus says he was ambitious; And Brutus is an honorable man.</p>
+</blockquote>
+<aside class="notes">
+<ul>
+<li>Let us see one example of an enthymeme.</li>
+<li>The missing premise here is that ambitious men are honorable.</li>
+</ul>
+</aside>
+</section></section>
+<section>
+<section id="historical-diagrams" class="title-slide slide level1">
+<h1>Historical diagrams</h1>
+
+</section>
+<section id="whately-1836" class="slide level2">
+<h2>Whately (1836)</h2>
+<figure>
+<img data-src="images1/whately.png" alt="http://www.austhink.org/whately.html (accessed 7.7.21)" /><figcaption aria-hidden="true"><span style="font-size: small;">http://www.austhink.org/whately.html (accessed 7.7.21)</span></figcaption>
+</figure>
+<aside class="notes">
+<ul>
+<li>This is the earliest known use of an argument diagram. The book was published in 1836 but the first edition was published in 1826.</li>
+<li>Whately was an English logician and Archbishop of Dublin.</li>
+<li>He was the first person who used diagram to illustrate argumentative processes.</li>
+<li>His method is to first figure out what is the ultimate conclusion and then trace the reasoning backward.</li>
+<li>Whately wrote that the ultimate conclusion is proved by the two premises below it, grouped together. Then each premise in turn is proved by a separate group of premises that appears below it.</li>
+<li>The final outcome is termed as a “chain of arguments” which is shown in this figure.</li>
+</ul>
+</aside>
+</section>
+<section id="wigmore-1913" class="slide level2">
+<h2>Wigmore (1913)</h2>
+<p><img data-src="images1/wigmore.png" style="width:80.0%" /></p>
+<aside class="notes">
+<ul>
+<li>Wigmore was the first to use diagrams to map facts and inferential links in legal matters.</li>
+<li>In this diagram the statement “Y died of poison” is the ultimate probandum.</li>
+<li>Circle 7 is an interim probandum. Line connecting 7 to ultimate probandum means provisional probative force.</li>
+<li>Wigmore’s main interest was in demonstrating the acceptability of the hypothesis given the factual evidence. Hence the upward direction. From evidence to hypothesis.</li>
+</ul>
+</aside>
+</section>
+<section id="beardsley-1950" class="slide level2">
+<h2>Beardsley (1950)</h2>
+<p><img data-src="images1/beardsley.png" /></p>
+<aside class="notes">
+<p>Beardsley represented the statements as nodes, using circled numbers, and he represented the links between the premises and conclusion as arrows joining the nodes. A piece of text can be transformed into an argument map using the following steps :</p>
+<ul>
+<li>Separate statements by brackets and number them.</li>
+<li>Put circles around the logical indicators.</li>
+<li>Supply, in parenthesis, any logical indicators that are left out.</li>
+<li>Set out the statements in a diagram in which arrows show the relationships between statements.</li>
+</ul>
+<p>The example here is of a convergent argument.</p>
+</aside>
+</section>
+<section class="slide level2">
+
+<p><img data-src="images1/beardsley2.png" /></p>
+<aside class="notes">
+<p>Beardsley also provided examples of divergent and serial arguments.</p>
+<p>We can observe that the arrows link premises to conclusions, no support is given to the inference between them.</p>
+</aside>
+</section>
+<section id="toulmin-1958" class="slide level2">
+<h2>Toulmin (1958)</h2>
+<p><img data-src="images1/toulmin.png" /></p>
+<aside class="notes">
+<p>The main revolution in the theory of argumentation was brought about by Toulmin in the late 1950s.</p>
+<p>He was the first to take into consideration the defeasible generalization.</p>
+<ul>
+<li>Claim: The conclusion of the argument or the statement the speaker wishes the audience to believe.</li>
+<li>Data: The foundation or basis for the claim.</li>
+<li>Warrant: The reasons behind the inference.</li>
+<li>Backing: The support for the warrant.</li>
+<li>Qualifier: The degree of force of the inferential link.</li>
+<li>Rebuttal: Exceptions that might defeat the claim.</li>
+</ul>
+</aside>
+</section>
+<section id="ibis-1970" class="slide level2">
+<h2>IBIS (1970)</h2>
+<p><img data-src="images1/ibis.png" /></p>
+<aside class="notes">
+<p>IBIS stands for Issue Based Information System.</p>
+<p>IBIS consists of three main elements:</p>
+<ul>
+<li>Issues (or questions): these are issues that need to be addressed.</li>
+<li>Positions (or ideas): these are responses to questions. Typically the set of ideas that respond to an issue represents the spectrum of perspectives on the issue.</li>
+<li>Arguments: these can be Pros (arguments supporting) or Cons (arguments against) an issue. The complete set of arguments that respond to an idea represents the multiplicity of viewpoints on it.</li>
+</ul>
+<p>Issue-Based Information Systems (IBIS) was originally meant to support coordination and planning of political decision processes.</p>
+</aside>
+</section>
+<section id="scriven-1976" class="slide level2">
+<h2>Scriven (1976)</h2>
+<p><img data-src="images1/scriven.png" /></p>
+<aside class="notes">
+<p>Unstated premises and conclusions.</p>
+<p>He introduces the counter-argument in his diagrams, taking into account Toulmin’s Rebuttal.</p>
+</aside>
+</section>
+<section id="freeman-1991" class="slide level2">
+<h2>Freeman (1991)</h2>
+<p><img data-src="images1/freeman.png" /></p>
+<aside class="notes">
+<p>An important feature of Freeman’s diagram is the distinction between convergent and linked arguments.</p>
+</aside>
+</section></section>
+<section>
+<section id="more-recently" class="title-slide slide level1">
+<h1>More recently</h1>
+
+</section>
+<section id="large-scale-argumentation-structure" class="slide level2">
+<h2>Large Scale Argumentation Structure</h2>
+<figure>
+<img data-src="images1/moser.png" style="width:50.0%" alt="(Moser and Mercer, 2020)" /><figcaption aria-hidden="true"><span style="font-size: small;">(Moser and Mercer, 2020)</span></figcaption>
+</figure>
+<aside class="notes">
+<p>Proposed two novel models by analyzing 5 biochemistry journal papers:</p>
+<ul>
+<li>Claim graph</li>
+<li>Model of Informational Hierarchy (MIH)</li>
+</ul>
+<p>All work in this paper is manual.</p>
+<p>Claims are categorized into three types:</p>
+<ul>
+<li>Figure claims
+<ul>
+<li>Direct support from data in figures/tables.</li>
+</ul></li>
+<li>Claim claims
+<ul>
+<li>Supported by other claims, or</li>
+<li>Supported by other claims + figure/table (this is occasional)</li>
+<li>Further three types:
+<ul>
+<li>Tertiary claim-claims
+<ul>
+<li>1 or 2 supporting claims</li>
+</ul></li>
+<li>Secondary claim-claims
+<ul>
+<li>3 or more supporting claims</li>
+<li>no relevance to the title/main concept of the paper</li>
+</ul></li>
+<li>Main claim-claims
+<ul>
+<li>3 or more supporting claims</li>
+<li>Directly related to the main concept/theme of the paper</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Others
+<ul>
+<li>Observations from experiments which could not be fitted to the data</li>
+</ul></li>
+</ul>
+</aside>
+</section>
+<section id="argumentation-knowledge-graph" class="slide level2">
+<h2>Argumentation Knowledge Graph</h2>
+<figure>
+<img data-src="images1/alkhatib.png" alt="(Al-Khatib et al., 2020)" /><figcaption aria-hidden="true"><span style="font-size: small;">(Al-Khatib et al., 2020)</span></figcaption>
+</figure>
+<aside class="notes">
+<p>The graph has been created on comparatively well structured data.</p>
+<p>The concepts are related to other concepts through positive and negative relations.</p>
+<p>The concepts have two attributes namely, Wikipedia concepts and goodness/badness. Each concept is colored to represent is goodness/badness and each concept is grounded to a Wikipedia concept.</p>
+</aside>
+</section></section>
+<section>
+<section id="in-meeting-domain" class="title-slide slide level1">
+<h1>In Meeting Domain</h1>
+
+</section>
+<section id="meeting-description-schema" class="slide level2">
+<h2>Meeting Description Schema</h2>
+<p><img data-src="images1/mds1.png" style="width:50.0%" /></p>
+<figure>
+<img data-src="images1/mds2.png" style="width:50.0%" alt="(Pallotta et al., 2004)" /><figcaption aria-hidden="true"><span style="font-size: small;">(Pallotta et al., 2004)</span></figcaption>
+</figure>
+<aside class="notes">
+<p>Pallotta et al. proposed Meeting Description Schema (MDS) as part of the IM2 project. (Interactive Multimodal Information Management - Swiss)</p>
+<p>It is based on IBIS and XML.</p>
+<p>Annotation schema consists of:</p>
+<ul>
+<li>Dialog</li>
+<li>Episode (new episode - topic change)</li>
+<li>Turn (new turn - speaker change)</li>
+</ul>
+<p>Here they have considered relations between episodes only.</p>
+<p>The episodes could be:</p>
+<ul>
+<li>Open</li>
+<li>Agenda</li>
+<li>Discussion</li>
+<li>Close, etc.</li>
+</ul>
+<p>Each episode can be composed of sub-episodes such as the Agenda episode here.</p>
+<p>Categories such as AKS, ACCEPT, REJECT might correspond to dialogue acts.</p>
+<p>They used MDS to annotate the ICSI corpus. (International Computer Science Institute, Berkeley)</p>
+</aside>
+</section>
+<section id="twente-argumentation-schema" class="slide level2">
+<h2>Twente Argumentation Schema</h2>
+<figure>
+<img data-src="images1/tas1.png" alt="(Rienks et al., 2005; Rienks and Verbree, 2010)" /><figcaption aria-hidden="true"><span style="font-size: small;">(Rienks et al., 2005; Rienks and Verbree, 2010)</span></figcaption>
+</figure>
+</section>
+<section class="slide level2">
+
+<figure>
+<img data-src="images1/tas2.png" alt="(Rienks et al., 2005; Rienks and Verbree, 2010)" /><figcaption aria-hidden="true"><span style="font-size: small;">(Rienks et al., 2005; Rienks and Verbree, 2010)</span></figcaption>
+</figure>
+<aside class="notes">
+<p>Rienks et al. introduced the Twente Argumentation Schema which is a diagramming model for meetings.</p>
+<p>This schema is inspired by the Rhetorical Structure Theory (RST).</p>
+<p>Only those type of meetings are considered in which the participants discuss the pros and cons of solutions to problems which is somewhat related to IBIS model.</p>
+<p>The schema was used to annotate the remote-control design meetings from the AMI meeting corpus.</p>
+<p>The nodes:</p>
+<ul>
+<li>Issues
+<ul>
+<li>Open issue</li>
+<li>Yes/No issue</li>
+<li>A/B issue</li>
+</ul></li>
+<li>Statements
+<ul>
+<li>Weak statement</li>
+<li>Statement</li>
+</ul></li>
+<li>(Other)</li>
+</ul>
+<p>The edges/relations:</p>
+<ul>
+<li>Clarification/(Elaboration)</li>
+<li>Specialization and Generalization</li>
+<li>(Request)</li>
+<li>Option</li>
+<li>Option-exclusion</li>
+<li>Positive</li>
+<li>Negative</li>
+<li>Uncertain</li>
+<li>Subject-to</li>
+</ul>
+</aside>
+</section>
+<section id="conversation-graphs" class="slide level2">
+<h2>Conversation Graphs</h2>
+<figure>
+<img data-src="images1/ailoma.png" alt="(Ailomaa, 2009)" /><figcaption aria-hidden="true"><span style="font-size: small;">(Ailomaa, 2009)</span></figcaption>
+</figure>
+<aside class="notes">
+<p>Conversation graphs are diagrams that summarize:</p>
+<ul>
+<li>What topics were discussed,</li>
+<li>How long they were discussed,</li>
+<li>Which participants were involved and</li>
+<li>What type of arguments they contributed with.</li>
+</ul>
+</aside>
+</section></section>
+<section>
+<section id="proposed-schemas" class="title-slide slide level1">
+<h1>Proposed Schemas</h1>
+
+</section>
+<section id="schema-1" class="slide level2">
+<h2>Schema 1</h2>
+</section>
+<section class="slide level2">
+
+<p><img data-src="images1/schema1.png" style="width:80.0%" /></p>
+</section>
+<section id="schema-2" class="slide level2">
+<h2>Schema 2</h2>
+</section>
+<section class="slide level2">
+
+<p><img data-src="images1/schema2.png" style="width:50.0%" /></p>
+</section>
+<section id="schema-3" class="slide level2">
+<h2>Schema 3</h2>
+</section>
+<section class="slide level2">
+
+<p><img data-src="images1/schema3.png" style="width:80.0%" /></p>
+</section>
+<section id="points-to-ponder" class="slide level2">
+<h2>Points to ponder</h2>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>Aligned with the computational requirements</li>
+<li>Comprehensive - at a glance</li>
+<li>Not too cluttered</li>
+<li>Meeting structure (one or more might be empty):
+<ul>
+<li>Opening remarks</li>
+<li>Agenda</li>
+<li>Discussion</li>
+<li>Action points</li>
+<li>Closing remarks</li>
+</ul></li>
+<li>Tasks to be performed - planning</li>
+</ul>
+</section>
+<section id="tasks-tentative" class="slide level2">
+<h2>Tasks (Tentative)</h2>
+<ul>
+<li>Opening, closing and body segmentation</li>
+<li>Topic identification and boundary detection</li>
+<li>Speaker identification and turn detection</li>
+<li>Claim and premise identification</li>
+<li>Inference detection and assignment</li>
+<li>(Dis)Agreement detection</li>
+<li>Action points identification</li>
+<li>Minutes of the meeting creation</li>
+<li>Automatic argument diagramming …</li>
+</ul>
+</section></section>
+<section>
+<section id="references" class="title-slide slide level1">
+<h1>References</h1>
+
+</section>
+<section class="slide level2">
+
+<div style="font-size: medium;">
+<ul>
+<li>Van Eemeren, F., Grootendorst, R., van Eemeren, F.H., 2004. A systematic theory of argumentation: The pragma-dialectical approach. Cambridge University Press.</li>
+<li>Whately, R., 1836. Elements of logic: comprising the substance of the article in the Encyclopaedia metropolitana with additions, &amp;c., 6th ed., rev. ed. B. Fellowes, London.</li>
+<li>Wigmore, J.H., 1913. The Principles of Judicial Proof: As Given by Logic, Psychology, and General Experience, and Illustrated in Judicial Trials. Little, Brown,.</li>
+<li>Beardsley, M.C., 1950. Practical logic. Prentice-Hall, New York.</li>
+<li>Toulmin, S.E., 1958. The uses of argument. Cambridge University Press, UK.</li>
+<li>Kunz, W., Rittel, H.W.J., 1970. Issues as Elements of Information Systems. Berkeley: Institute of Urban &amp; Regional Development, University of California Working Paper 131.</li>
+<li>Scriven, M., 1976. Reasoning. McGraw-Hill.</li>
+<li>Freeman, J.B., 1991. Dialectics and the Macrostructure of Arguments: A Theory of Argument Structure. DE GRUYTER.</li>
+<li>Al-Khatib, K., Hou, Y., Wachsmuth, H., Jochim, C., Bonin, F., Stein, B., 2020. End-to-End Argumentation Knowledge Graph Construction. AAAI 34, 7367–7374. https://doi.org/10.1609/aaai.v34i05.6231</li>
+<li>Moser, E., Mercer, R.E., 2020. Use of Claim Graphing and Argumentation Schemes in Biomedical Literature: A Manual Approach to Analysis, in: Proceedings of the 7th Workshop on Argument Mining. Presented at the ArgMining-COLING 2020, Association for Computational Linguistics, Online, pp. 88–99.</li>
+<li>Pallotta, V., Ghorbel, H., Ruch, P., Coray, G., 2004. An argumentative annotation schema for meeting discussions. arXiv:cs/0410061.</li>
+<li>Rienks, R., Verbree, D., 2010. Twente Argument Schema Annotation Manual v 0.99b.</li>
+<li>Ailomaa, M., 2009. Answering questions about archived, annotated meetings (No. THESIS). EPFL. https://doi.org/10.5075/epfl-thesis-4512</li>
+</ul>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: false,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
